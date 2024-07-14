@@ -10,6 +10,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 // set engine
+app.set('views', './views');
 app.set('view engine', 'ejs');
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -27,7 +28,7 @@ io.on('connection', (socket) => {
 })
 
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('index');
 });
 
 const PORT = process.env.PORT || 3000;
